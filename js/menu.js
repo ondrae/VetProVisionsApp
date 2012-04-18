@@ -1,7 +1,6 @@
 $(document).ready(function() {
     // Global variables
     var jsonData;
-    var num_of_packets;
 
     $.getJSON('data/medicines.json', function(data) {
         jsonData = data;
@@ -55,24 +54,21 @@ $(document).ready(function() {
                     $('#instr_text').append('You\'ll need '+Math.ceil(num_of_packets)+' packets per day.<br/>');
                     //Figure out amount of stock solution.
                     var solution = water / 128;
-                    $('#instr_text').append('Mix the packets into '+solution+' gallons of stock solution.<br/>');
-
+                    $('#instr_text').append('Mix the packets into '+Math.round(solution)+' gallons of stock solution.<br/>');
                 }
                 // If product is sold in milligrams.
                 if(jsonData[i].amount_unit == 'mg'){
                     var dose_mg = totalWeight * jsonData[i].dose;
                     //console.log("dose_mg: " + dose_mg);
                     $('#instr_text').append('Your herd needs '+dose_mg+' milligrams of '+medicine+' a day.<br/>');
+                    $('#instr_text').append(medicine+' is sold in '+jsonData[i].amount+' milligram packets.<br/>');
                     num_of_packets = dose_mg / jsonData[i].amount;
-                    //console.log("amount: " + jsonData[i].amount);
                     //console.log("num_of_packets: " + num_of_packets);
-                    $('#instr_text').append(Math.ceil(num_of_packets));
+                    $('#instr_text').append('You\'ll need '+Math.ceil(num_of_packets)+' packets per day.<br/>');
+                    var solution = water / 128;
+                    $('#instr_text').append('Mix the packets into '+Math.round(solution)+' gallons of stock solution.<br/>');
                 }
             }
         }
-
-    })
-    $("#startOver").click(function() {
-        $("#form").slideDown();
     })
  });
