@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>VetProVisions</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type='text/javascript' src="js/jquery-1.7.2.min.js"></script>
+	<script type='text/javascript' src="js/jquery.mobile-1.1.0.min.js"></script>
 	<script type='text/javascript' src="js/menu.js"></script>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/auroraapp.css">
+	<link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="css/auroraapp.css" />
 </head>
 <body>
-	<div id="main" class="center">
-		<img src="img/vetpro.png">
-		<div id="form">
-			<p><label>Medicine:</label></p>
-			<select id="medicine"><!--menu.js--></select>
+	<div data-role="page">
+		<div data-role="header">
+			<h1>VetProVisions</h1>
+		</div><!-- /header -->
+		<div id="form" data-role="content">		
+			<p><label for="medicine" class="select">Medicine:</label></p>
+			<select name="medicine" id="medicine">
+				<option value="nope">Please choose your medicine</option>
+				<!--menu.js-->
+			</select>
 			<p><label>Number of animals:</label></p>
-			<input id="numAnimals"type="text">
+			<input id="numAnimals" type="text">
 			<p><label>Average weight of animals:</label></p>
-			<input id="weight"type="text">
-			<button id="calculate" class="btn-large btn-primary">Calculate Dosage</button>
-		</div>
-		<div id="instr_box">
-			<div id="instr_text"></div>
-		</div>
-	</div>
-	<div id="footer" class="center">
-		See more products at <a href="http://www.vetprovisions.com/">VetProVisions</a>.
-	</div>
+			<input id="weight" type="text">
+			<br />
+			<button id="calculate" data-theme="b">Calulate Dosages</button>
 
+		</div><!-- /form -->
+
+		<div id="instructions" data-role="content">
+			<ul>
+				<li class="water"></li>
+				<li class="dose"></li>
+				<li class="pkt_size"></li>
+				<li class="pkt_per_day"></li>
+				<li class="solution"></li>
+			</ul>
+			<div id="detailed_instructions">
+			</div><!--/detailed_instructions-->
+		</div><!--/instructions-->
+		<div id="footer" data-role="footer">
+			See more products at <a href="http://www.vetprovisions.com/">VetProVisions</a>.
+		</div><!--/footer-->
+	</div><!--page-->
 </body>
 </html>
