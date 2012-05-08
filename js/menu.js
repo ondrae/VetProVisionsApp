@@ -104,7 +104,7 @@ $(document).ready(function() {
                         var bottles = totalWeight / jsonData[i].AmountUse;
                         $('.packets').append('Your herd needs '+Math.round(bottles * 10) / 10+' bottles of '+medicine+' per day.');
                     }
-                    if ($('#species').val() == 'Cattle'){
+                    if ($('#species').val() == 'Swine'){
                         $('.packets').empty();
                         var bottles = totalWeight / 7500;
                         $('.packets').append('Your herd needs '+Math.round(bottles * 10) / 10+' bottles of '+medicine+' per day.');
