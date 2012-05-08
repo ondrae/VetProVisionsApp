@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns		= "http://www.w3.org/ns/widgets"
+	xmlns:gap	= "http://phonegap.com/ns/1.0"
+	id		= "com.vetprovisions.app"
+	version 	= "1.0.0">
+
+	<name>Vet Provisions</name>
+
+	<description>
+		An app for VetProvisions.com that helps farmers know how much medicine they need to purchase.
+	</description>
+
+	<author href="http://www.hackyourcity.com"
+		email="hyd415@gmail.com">
+		Andrew Hyder
+	</author>
+	
+	<icon src="css/images/med.png" gap:role="default" />
+    <gap:splash src="css/images/vetpro.png" width="480px" height="640px" />
+
+	<preference name="permissions" value="none"/>
+	<preference name="orientation" value="portrait" />
+	<preference name="android-minSdkVersion" value="7" />
+</widget>
+
