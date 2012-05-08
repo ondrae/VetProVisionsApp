@@ -1,0 +1,338 @@
+[
+    {
+        "AmountUse": "1",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Amoxicillin 60gm"
+    },
+    {
+        "AmountUse": "2.5",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Amoxicillin 150gm"
+    },
+    {
+        "AmountUse": "3",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Amoxicillin 180gm"
+    },
+    {
+        "AmountUse": "5",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Amoxicillin 300gm"
+    },
+    {
+        "AmountUse": "0.8",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Swine",
+        "Product": "Aureomycin"
+    },
+    {
+        "AmountUse": "0.33",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Swine",
+        "Product": "Denagard - Low Dose"
+    },
+    {
+        "AmountUse": "1",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Swine",
+        "Product": "Denagard - High Dose"
+    },
+    {
+        "AmountUse": "0.75",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "Swine",
+        "Product": "Gentamicin Liquid - 100ml Bottle"
+    },
+    {
+        "AmountUse": "2",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "",
+        "Product": "Gentamicin Liquid - 250ml Bottle"
+    },
+    {
+        "AmountUse": "1",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "Swine",
+        "Product": "Gen-Guard bucket - Low Dose"
+    },
+    {
+        "AmountUse": "0.5",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "Swine",
+        "Product": "Gen-Guard bucket - High Dose"
+    },
+    {
+        "AmountUse": "8",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Ibuprofen 15.80%"
+    },
+    {
+        "AmountUse": "1",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Swine",
+        "Product": "Lincomycin Powder 80gm"
+    },
+    {
+        "AmountUse": "2",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "",
+        "Product": "Lincomycin Powder 160gm"
+    },
+    {
+        "AmountUse": "1",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Goat,Sheep,Swine",
+        "Product": "Neomycin 325"
+    },
+    {
+        "AmountUse": "1",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "Swine",
+        "Product": "Nuflor Oral Solution"
+    },
+    {
+        "AmountUse": "2",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry,Swine",
+        "Product": "Wazine 34%"
+    },
+    {
+        "AmountUse": "1",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry,Swine",
+        "Product": "Wazine 17%"
+    },
+    {
+        "AmountUse": "8",
+        "Use": "Oral",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Sulfa-Trim 12.6%"
+    },
+    {
+        "AmountUse": "12",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Poultry",
+        "Product": "Tet 324"
+    },
+    {
+        "AmountUse": "4",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry,Swine",
+        "Product": "Tetroxy HCA 1400gm"
+    },
+    {
+        "AmountUse": "5",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry,Swine",
+        "Product": "Tetroxy HCA 1772gm"
+    },
+    {
+        "AmountUse": "3",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry,Swine",
+        "Product": "Tylan Powder"
+    },
+    {
+        "AmountUse": "8",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Poultry,Swine",
+        "Product": "Oral Pro 48% - Antinflamatory"
+    },
+    {
+        "AmountUse": "12",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Poultry,Swine",
+        "Product": "Oral Pro 48% - Analgesic"
+    },
+    {
+        "AmountUse": "9",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Poultry,Swine",
+        "Product": "Oral Pro 60% - Antinflamatory"
+    },
+    {
+        "AmountUse": "16",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Poultry,Swine",
+        "Product": "Oral Pro 60% - Analgesic"
+    },
+    {
+        "AmountUse": "12",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Cattle,Poultry",
+        "Product": "Sulfadimethoxine 12.5"
+    },
+    {
+        "AmountUse": "0.4",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry",
+        "Product": "Pen Pot"
+    },
+    {
+        "AmountUse": "256",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry,Swine",
+        "Product": "Oral Pro D3+E"
+    },
+    {
+        "AmountUse": "0.2",
+        "Use": "Oral",
+        "Rx": "",
+        "Species": "Poultry",
+        "Product": "LS 50-Poultry Only"
+    },
+    {
+        "AmountUse": "110000",
+        "Use": "Topical",
+        "Rx": "",
+        "Species": "Cattle,",
+        "Product": "Ivermectin"
+    },
+    {
+        "AmountUse": "110000",
+        "Use": "Topical",
+        "Rx": "",
+        "Species": "Cattle",
+        "Product": "Cydectin"
+    },
+    {
+        "AmountUse": "11000",
+        "Use": "Injection",
+        "Rx": "",
+        "Species": "Cattle",
+        "Product": "Ivermectin - Cattle"
+    },
+    {
+        "AmountUse": "7500",
+        "Use": "Injection",
+        "Rx": "",
+        "Species": "Swine",
+        "Product": "Ivermectin - Swine"
+    },
+    {
+        "AmountUse": "10000",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle,Horse",
+        "Product": "Banamine"
+    },
+    {
+        "AmountUse": "10000",
+        "Use": "Injection",
+        "Rx": "",
+        "Species": "Cattle",
+        "Product": "Oxytetracycline - 100mg"
+    },
+    {
+        "AmountUse": "10000",
+        "Use": "Injection",
+        "Rx": "",
+        "Species": "Cattle,Swine",
+        "Product": "Oxytetracycline - 200mg"
+    },
+    {
+        "AmountUse": "3300",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle,Swine",
+        "Product": "Oxytetracycline - 300mg"
+    },
+    {
+        "AmountUse": "3300",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle",
+        "Product": "Nuflor - IM Injection"
+    },
+    {
+        "AmountUse": "1660",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle",
+        "Product": "Nuflor - SQ Injection"
+    },
+    {
+        "AmountUse": "400",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle, ",
+        "Product": "Baytril  - Low Dose"
+    },
+    {
+        "AmountUse": "2940",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle,Swine",
+        "Product": "Baytril - High Dose"
+    },
+    {
+        "AmountUse": "9800",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle,Swine",
+        "Product": "Draxxin"
+    },
+    {
+        "AmountUse": "10000",
+        "Use": "Injection",
+        "Rx": "",
+        "Species": "Cattle,Swine,Horse",
+        "Product": "Penicillin G Procaine"
+    },
+    {
+        "AmountUse": "5000",
+        "Use": "Injection",
+        "Rx": "Rx",
+        "Species": "Cattle,Swine,Horse",
+        "Product": "Polyflex"
+    },
+    {
+        "AmountUse": "15767",
+        "Use": "Feed",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Pyrantel Pamoate - Ascarids"
+    },
+    {
+        "AmountUse": "4300",
+        "Use": "Feed",
+        "Rx": "Rx",
+        "Species": "",
+        "Product": "Pyrantel Pamoate - Whipworms"
+    }
+]
