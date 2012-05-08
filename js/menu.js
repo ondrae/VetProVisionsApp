@@ -2,7 +2,7 @@ $(document).ready(function() {
     // Global variables
     var jsonData;
 
-    $.getJSON('data/medicines.json', function(data) {
+    $.getJSON('data/medicines_simple.json', function(data) {
         jsonData = data;
         var products = [];
         for(i in data){
@@ -97,6 +97,18 @@ $(document).ready(function() {
                     var pktDayTwo = stock / 24;
                     $('.packets').append('Your herd needs '+Math.ceil(pktDayOne)+' packets of '+medicine+' the first day and '+Math.ceil(pktDayTwo)+' the second day');
                     $('.stock').append('to make '+Math.round(stock * 10) / 10+' gallons of stock solution per day.');
+                }
+                if (medicine =='Ivermectin - Injection') {
+                    if ($('#species').val() == 'Cattle'){
+                        $('.packets').empty();
+                        var bottles = totalWeight / jsonData[i].AmountUse;
+                        $('.packets').append('Your herd needs '+Math.round(bottles * 10) / 10+' bottles of '+medicine+' per day.');
+                    }
+                    if ($('#species').val() == 'Cattle'){
+                        $('.packets').empty();
+                        var bottles = totalWeight / 7500;
+                        $('.packets').append('Your herd needs '+Math.round(bottles * 10) / 10+' bottles of '+medicine+' per day.');
+                    }
                 }
 
                 // Rx
