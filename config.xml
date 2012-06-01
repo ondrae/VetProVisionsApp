@@ -16,7 +16,6 @@
 	</author>
 	
 	<icon src="css/images/med.png" gap:role="default" />
-    <gap:splash src="css/images/vetpro.png" width="480px" height="640px" />
 
 	<preference name="permissions" value="none"/>
 	<preference name="orientation" value="portrait" />

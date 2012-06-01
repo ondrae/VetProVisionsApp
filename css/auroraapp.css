@@ -1,16 +1,22 @@
+.ui-content {
+    position : absolute;
+    top      : 41px; /*Header height*/
+    right    : 0;
+    bottom   : 39px; /*Footer height*/
+    left     : 0;
+}
 #instructions{
-	visibility:collapse;
+	display:none;
 }
 li{
 	list-style-type: none;
 }
-#disclaimer{
-	font-size: 12px;
+.rx{
+	font-style: italic;
 }
 #footer{
 	text-align: right;
-}
-#disclaimer{
 	position: absolute;
-	bottom: 35px;
+	bottom: 0;
+	width:100%;
 }

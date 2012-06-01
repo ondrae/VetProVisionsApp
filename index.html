@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/auroraapp.css" />
 </head>
 <body>
-	<div data-role="page">
+	<div data-role="page" data-theme="d">
 		<div data-role="header" data-theme="a">
 			<h1>Vet Provisions</h1>
 		</div><!-- /header -->
@@ -20,35 +20,57 @@
 				<option value="nope">Please choose your medicine</option>
 				<!--menu.js-->
 			</select>
-			<p><label for="species" class="select">Species:</label></p>
-			<select name="species" id="species" disabled>
-				<option value="nope">Consult your veterinarian</option>
+			<div id="optionsWrapper">
+			<p><label for="options" class="select">Options:</label></p>
+				<select name="options" id="options" disabled>
+				</select>
+			</div><!--/optionsWrapper-->
+			<p><label for="containerSize" class="select">Size of Medicine Container:</label></p>
+			<select name="containerSize" id="containerSize" disabled>
+				<option value="nope">Please choose size of container</option>
 			</select>
+			<div id="speciesWrapper">
+				<p><label for="species" class="select">Species:</label></p>
+				<select name="species" id="species" disabled>
+				</select>
+			</div><!--/speciesWrapper-->
+			<div id="daysWrapper">
+				<p><label for="days">Days of Use:</label></p>
+				<input type="range" name="days" id="days" value="3" min="1" max="7" />
+			</div><!--/daysWrapper-->
 			<p><label>Number of animals:</label></p>
-			<input id="numAnimals" type="text">
+			<input id="numberOfAnimals" type="number" placeholder="2000">
 			<p><label>Average weight of animals:</label></p>
-			<input id="weight" type="text">
-			<br />
+			<input id="avgWeight" type="number" placeholder="200">
+			<br/>
 			<button id="calculate" data-theme="b">Calulate Dosages</button>
-
 		</div><!-- /form -->
 
 		<div id="instructions" data-role="content">
-			<ul>
-				<li class="packets"></li>
-				<li class="stock"></li>
+			<ul class="instructions" data-role="listview" data-inset="true" data-dividertheme="c">
+				<li class="medicineName" data-role="list-divider">Medicine Name: </li>
+				<li class='option'></li>
+				<li class="containerSize">Container Size: </li>
+				<li class="species">Species: </li>
+				<li class="days">Days Prescribed: </li>
+				<li class="numberOfAnimals">Number of Animals: </li>
+				<li class="avgWeight">Average Animal Weight: </li>
+				<li data-role="list-divider">Instructions</li>
 				<li class="rx"></li>
+				<li class="total">Total Needed: </li>
+				<li class="containers"></li>
+				<li class="stock"></li>
 			</ul>
-			<div id="detailed_instructions">
-			</div><!--/detailed_instructions-->
-			<button id="clear" data-theme="b" data-icon="back">Choose Another Medicine</button>
-			<div id="disclaimer">
-				<p>Always consult your Veterinarian on dosages, length of treatment and  withdrawal times prior to using any drug. This calculation is for dose only, observe all label warning and follow usage recommendations. Withdrawal times for meat and milk are not listed on this app.</p>
-			</div><!--/disclaimer-->
+				
+			</ul>
+			<button id="clear" data-icon="back" data-theme="b">Choose Another Medicine</button>
+				<ul class="disclaimer" data-role="listview" data-inset="true">
+					<li>Always consult your Veterinarian on dosages, length of treatment and  withdrawal times prior to using any drug. This calculation is for dose only, observe all label warning and follow usage recommendations. Withdrawal times for meat and milk are not listed on this app.</li>
+				</ul>
 		</div><!--/instructions-->
 
-		<div id="footer" data-role="footer" data-position="fixed" data-theme="d">
-			See more products at <a href="http://www.vetprovisions.com/" data-theme="a">Vet Provisions</a>
+		<div id="footer" data-role="footer" data-theme="d">
+			See more products at <a href="http://www.vetprovisions.com/" data-theme="b">Vet Provisions</a>
 		</div><!--/footer-->
 	</div><!--page-->
 </body>
