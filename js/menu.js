@@ -323,11 +323,11 @@ $(document).ready(function() {
         // Make sure they entered integers
         if ((typeof numberOfAnimals != "number") && Math.floor(numberOfAnimals) != numberOfAnimals){
             $(".instructions").empty();
-            $(".instructions").append('<h3><li>Please only enter numbers in the fields.</li></h1>');
+            $(".instructions").append('<h3><li>Please only enter numbers in the Number of Animals field.</li></h1>');
         }
         if ((typeof avgWeight != "number") && Math.floor(avgWeight) != avgWeight){
             $(".instructions").empty();
-            $(".instructions").append('<h3><li>Please only enter numbers in the fields.</li></h1>');
+            $(".instructions").append('<h3><li>Please only enter numbers in the Average Weight field.</li></h1>');
         }
 
         $("#clear").click(function() {
