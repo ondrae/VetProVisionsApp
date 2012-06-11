@@ -16,6 +16,7 @@
 	</author>
 	
 	<icon src="css/images/med.png" gap:role="default" />
+	<gap:splash src="splash.png" />
 
 	<preference name="permissions" value="none"/>
 	<preference name="orientation" value="portrait" />
