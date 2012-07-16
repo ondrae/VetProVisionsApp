@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
-	id		= "com.vetprovisions.app"
+	id		= "com.vetprovisions.dosecalculator"
 	version 	= "1.0.0">
 
 	<name>Vet Provisions</name>
@@ -14,11 +14,15 @@
 		email="hyd415@gmail.com">
 		Andrew Hyder
 	</author>
-	
-	<icon src="css/images/med.png" gap:role="default" />
+
+	<icon src="icon.png" gap:role="default" />
+	<gap:splash src="splash.png" gap:platform="default" />
+	<gap:splash src="splash.png" gap:platform="ios" />
+	<gap:splash src="winphone/splash.jpg" gap:platform="winphone" />
 
 	<preference name="permissions" value="none"/>
 	<preference name="orientation" value="portrait" />
 	<preference name="android-minSdkVersion" value="7" />
+
 </widget>
 
