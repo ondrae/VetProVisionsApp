@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    Parse.initialize("EdGILd3A1o6QtEWVOGsVkGdCZ30mGyu0fAdLpJgD", "YFQnZQtz54YTDtau556EetWhVINaN6IdWPIfVYAx");
+    var currentUser = Parse.User.current();
+
+    if (currentUser) {
+        $('#emailBox').css('display','none');
+    }
     // Global variables
     var jsonData;
     // Open json file and make array
@@ -72,6 +78,7 @@ $(document).ready(function() {
 
     // Get species list
     $('#speciesWrapper').hide();
+
     $("#medicine").change(function(){
         var selectedMed = $(this).find(":selected").val();
         var medicine = $("#medicine").val();
@@ -135,11 +142,13 @@ $(document).ready(function() {
 
     // Calculate medicine instructions on click
     $("#calculate").click(function() {
-        $('#form').hide();
+        $('#form').hide();  
 
         // Rx
+        var rx = '';
         if (jsonData[i].Script.length > 0){
             $('.rx').append('Prescription needed, consult your veterinarian.')
+            rx = 'Prescription needed, consult your veterinarian.';
         }
 
         // Form values
@@ -150,6 +159,7 @@ $(document).ready(function() {
         var numberOfAnimals = $("#numberOfAnimals").val();
         var avgWeight = $("#avgWeight").val();
         var selectedOption = $("#options").val();
+        var email = $('#email').val();
         if (selectedOption == null){ // Convert null to empty string
             selectedOption = '';
         }
@@ -184,8 +194,9 @@ $(document).ready(function() {
             if(medicine == jsonData[i].ProductName){
                 if(containerSize == jsonData[i].ProductSize){
                     if (selectedOption == jsonData[i].Options){
+                        var application = jsonData[i].Application;
                         // Oral Water
-                        if (jsonData[i].Application == 'Oral Water'){
+                        if (application == 'Oral Water'){
                             var totalWaterNeeded = totalWeight / 100; // A gallon of water per 100 pounds.
                             var stock = totalWaterNeeded / 128; // A gallon of stock for every 128 gallons of water.
                             var containersPerGallonOfStock = jsonData[i].AmountUse;
@@ -262,14 +273,14 @@ $(document).ready(function() {
                             $('.containers').append(' of '+medicine+' for '+days+' day.');
                         }
                         // Topical
-                        if (jsonData[i].Application == 'Pour On'){
+                        if (application == 'Pour On'){
                             $('.stock').append('Apply '+amountPerAnimal+' '+containerUnit+' per animal topically as directed.');
                         }
                         // Injection
-                        if (jsonData[i].Application == 'Injection'){
+                        if (application == 'Injection'){
                             $('.stock').append('Inject '+amountPerAnimal+' '+containerUnit+' per animal.');
                         }
-                        if (jsonData[i].Application == 'Oral On Feed'){
+                        if (application == 'Oral On Feed'){
                             $('.stock').append('Add '+amountPerAnimal+' '+containerUnit+' into the feed of each animal.');
                         }
                         // Special Case
@@ -330,10 +341,69 @@ $(document).ready(function() {
             $(".instructions").append('<h3><li>Please only enter numbers in the Average Weight field.</li></h1>');
         }
 
+        // Report usage back to Parse.
+        var currentUser = Parse.User.current();
+        if (currentUser){
+            email = currentUser.attributes.username;
+        }else{
+            var user = new Parse.User();
+            user.set({
+                "username": email
+                , "password": 'genericPassword'
+            });
+            
+            user.signUp(null, {
+                success: function(user) {
+                },
+                error: function(user, error) {
+                }
+            });
+        }
+
+        var UsageObject = Parse.Object.extend("UsageObject");
+        var usageObject = new UsageObject();
+        
+        usageObject.set({
+            "email":email
+            , "medicine":medicine
+            // , "selectedOption":selectedOption
+            , "containerSize":containerSize
+            // , "days":days
+            , "species":species
+            , "numberOfAnimals":numberOfAnimals
+            // , "avgWeight":avgWeight
+            // , "container":container
+            // , "dose":dose
+            // , "doseUnit":doseUnit
+            // , "specialCase":specialCase
+            // , "containerAmount":containerAmount
+            // , "containerUnit":containerUnit
+            , "totalContainers":totalContainers
+            // , "stock":null
+            // , "amountPerAnimal":null
+        });
+
+        // if (application == 'Oral Water'){
+        //     usageObject.set({"stock":stock});
+        // }
+        // else{
+        //     usageObject.set({"amountPerAnimal":amountPerAnimal});
+        // }
+
+        usageObject.save(null, {
+          success: function(usageObject) {
+            // The object was saved successfully.
+          },
+          error: function(usageObject, error) {
+            // The save failed.
+            // error is a Parse.Error with an error code and description.
+          }
+        });
+        
         $("#clear").click(function() {
             location.reload();
         });
 
     });
-
+    
  });

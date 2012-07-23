@@ -16,7 +16,7 @@
 	</author>
 
 	<icon src="icon.png" gap:role="default" />
-	<gap:splash src="splash.png" gap:platform="default" />
+	<gap:splash src="splash.png" gap:platform="android" />
 	<gap:splash src="splash.png" gap:platform="ios" />
 	<gap:splash src="winphone/splash.jpg" gap:platform="winphone" />
 

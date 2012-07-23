@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type='text/javascript' src="js/jquery-1.7.2.min.js"></script>
 	<script type='text/javascript' src="js/jquery.mobile-1.1.0.min.js"></script>
+	<script type='text/javascript' src="js/parse-1.0.12.min.js"></script>
 	<script type='text/javascript' src="js/menu.js"></script>
 	<link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" />
 	<link rel="stylesheet" href="css/auroraapp.css" />
@@ -14,35 +15,39 @@
 		<div data-role="header" data-theme="d">
 			<h1>Vet Provisions</h1>
 		</div><!-- /header -->
-		<div id="form" data-role="content">		
-			<p><label for="medicine" class="select">Medicine:</label></p>
-			<select name="medicine" id="medicine">
-				<option value="nope">Please choose your medicine</option>
+		<div id="form" data-role="content" >	
+			<p><label for="medicine" class="select ui-hidden-accessible">Medicine:</label></p>
+			<select name="medicine" id="medicine" data-mini="true">
+				<option value="nope">Medicine</option>
 				<!--menu.js-->
 			</select>
 			<div id="optionsWrapper">
-			<p><label for="options" class="select">Options:</label></p>
-				<select name="options" id="options" disabled>
+			<p><label for="options" class="select ui-hidden-accessible">Options:</label></p>
+				<select name="options" id="options" data-mini="true" disabled>
 				</select>
 			</div><!--/optionsWrapper-->
-			<p><label for="containerSize" class="select">Size of Medicine Container:</label></p>
-			<select name="containerSize" id="containerSize" disabled>
-				<option value="nope">Please choose size of container</option>
+			<p><label for="containerSize" class="select ui-hidden-accessible">Size of Medicine Container:</label></p>
+			<select name="containerSize" id="containerSize" data-mini="true" disabled>
+				<option value="nope">Size of Container</option>
 			</select>
 			<div id="speciesWrapper">
-				<p><label for="species" class="select">Species:</label></p>
-				<select name="species" id="species" disabled>
+				<p><label for="species" class="select ui-hidden-accessible">Species:</label></p>
+				<select name="species" id="species" data-mini="true" disabled>
 				</select>
 			</div><!--/speciesWrapper-->
 			<div id="daysWrapper">
 				<p><label for="days">Days of Use:</label></p>
-				<input type="range" name="days" id="days" value="3" min="1" max="7" />
+				<input type="range" name="days" id="days" value="3" min="1" max="7" data-mini="true"/>
 			</div><!--/daysWrapper-->
 			<p><label>Number of animals:</label></p>
-			<input id="numberOfAnimals" type="text">
+			<input id="numberOfAnimals" type="text" data-mini="true">
 			<p><label>Average weight of animals:</label></p>
-			<input id="avgWeight" type="text">
-			<br/>
+			<input id="avgWeight" type="text" data-mini="true">
+			<div id="emailBox">
+				<p><label>Email:</label></p>
+				<input id="email" type="text" data-mini="true">
+			</div>
+			<br />
 			<button id="calculate" data-theme="b">Calulate Dosages</button>
 		</div><!-- /form -->
 
@@ -69,8 +74,8 @@
 				</ul>
 		</div><!--/instructions-->
 
-		<div id="footer" data-role="footer" data-theme="d">
-			See more products at <a href="http://www.vetprovisions.com/" data-theme="b">Vet Provisions</a>
+		<div id="footer" data-role="footer" data-position="fixed" data-theme="d">
+			See more products at <a href="http://www.vetprovisions.com/" data-theme="b" target='_blank'>Vet Provisions</a>
 		</div><!--/footer-->
 	</div><!--page-->
 </body>
