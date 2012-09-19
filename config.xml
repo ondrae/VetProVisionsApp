@@ -16,12 +16,12 @@
 	</author>
 
 	<icon src="icon.png" gap:role="default" />
-	<gap:splash src="splash.png" gap:platform="android" />
-	<gap:splash src="splash.png" gap:platform="ios" />
+	<gap:splash src="splash.png" />
 
 	<preference name="permissions" value="none"/>
 	<preference name="orientation" value="portrait" />
-	<preference name="android-minSdkVersion" value="7" />
+	<preference name="show-splash-screen-spinner" value="false" />
+	<preference name="webviewbounce" value="false" />
 
 </widget>
 

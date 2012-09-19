@@ -146,10 +146,10 @@ $(document).ready(function() {
                 var medicine = $("#medicine").val();
                 var option = $("#options").val();
                 if (medicine == 'Baytril'){
-                    if (option == 'High Dose'){
+                    if (option == 'Single Injection'){
                         $('#days').val(1);
-                    $('#days').slider('disable');
-                    $('#daysWrapper').slideUp();
+                        $('#days').slider('disable');
+                        $('#daysWrapper').slideUp();
                     }
                     else{
                         $('#days').slider('enable');
@@ -161,7 +161,30 @@ $(document).ready(function() {
                     $('#daysWrapper').slideDown();
                 }
             });
-        }
+            $('#species').change(function(){
+                var medicine = $("#medicine").val();
+                var species = $("#species").val();
+                if (medicine == 'Baytril'){
+                    if (species == 'Swine'){
+                        $('#options').val('Single Injection');
+                        $('#options').selectmenu('refresh');
+                        $('#days').val(1);
+                        $('#days').slider('disable');
+                        $('#daysWrapper').slideUp();
+                    }
+                    else{
+                        $('#days').slider('enable');
+                        $('#daysWrapper').slideDown();
+                    }
+                }
+                else{
+                    $('#days').slider('enable');
+                    $('#daysWrapper').slideDown();
+                }
+            });
+            
+
+        } // /.getJSON
 
         // MENU FUNCTION CALLS
         hideInitMenu();
@@ -218,6 +241,8 @@ $(document).ready(function() {
             for (i in selectedMedicines){
                 if (containerSize == selectedMedicines[i].ProductSize){
                     if (selectedOption == selectedMedicines[i].Options || selectedOption == null){
+                        var selectedMedicineName = selectedMedicines[i].ProductName;
+                        var selectedContainerSize = selectedMedicines[i].ProductSize
                         var container = selectedMedicines[i].Container;
                         var dose = selectedMedicines[i].Dose;
                         var doseUnit = selectedMedicines[i].DoseUnit;
@@ -233,7 +258,7 @@ $(document).ready(function() {
                             rx = 'Prescription needed, consult your veterinarian.';
                         }
 
-                        var application = medicines[i].Application;
+                        var application = selectedMedicines[i].Application;
                         // Oral Water
                         if (application == 'Oral Water'){
                             var totalWaterNeeded = totalWeight / 100; // A gallon of water per 100 pounds.
@@ -243,7 +268,7 @@ $(document).ready(function() {
                             var totalContainers = Math.ceil(containersPerDay * days);
                             
                             // Round reported numbers
-                            if (stock > 0.1){
+                            if (stock > 1){
                                 stock = Math.round(stock * 100) / 100;
                                 $('.stock').append('Mix into '+stock+' gallons of stock solution each day.');
                             }
@@ -254,8 +279,8 @@ $(document).ready(function() {
                             }
                         }
                         else{ // Topical, Injection, or Oral Feed
-                            var poundsTreatedPerContainer = medicines[i].AmountUse;
-                            var containerUnit = medicines[i].ContainerUnit;
+                            var poundsTreatedPerContainer = selectedMedicines[i].AmountUse;
+                            var containerUnit = selectedMedicines[i].ContainerUnit;
                             // Give instructions in ml
                             if (containerUnit == 'Liter'){
                                 containerUnit = 'ml';
@@ -275,7 +300,7 @@ $(document).ready(function() {
                             if (medicine == 'Neomycin 325'){
                                 if (species == 'Swine'){
                                     if (avgWeight > 100){
-                                        containersPerGallonOfStock = medicines[i].AmountUse2;
+                                        containersPerGallonOfStock = selectedMedicines[i].AmountUse2;
                                         containersPerDay = stock / containersPerGallonOfStock;
                                         totalContainers = Math.ceil(containersPerDay * days);
                                     }
@@ -283,7 +308,7 @@ $(document).ready(function() {
                             }
                             if (medicine == 'Ivermectin'){
                                 if (species == 'Swine'){
-                                    poundsTreatedPerContainer = medicines[i].AmountUse2;
+                                    poundsTreatedPerContainer = selectedMedicines[i].AmountUse2;
                                     containersPerDay = totalWeight / poundsTreatedPerContainer;
                                     containersPerAnimal = containersPerDay / numberOfAnimals;
                                     amountPerAnimal = containersPerAnimal * containerAmount; // In ml
@@ -297,12 +322,22 @@ $(document).ready(function() {
                         amountPerDay = Math.round(amountPerDay * 100) / 100;
                         amountPerAnimal = Math.round(amountPerAnimal * 100) / 100;
 
-                        $('.total').append(totalContainers + ' ' + container);
+                        if (totalContainers == 1){
+                            container = container.slice(0,-1);
+                            $('.total').append(totalContainers + ' ' + container);
+                        }
+                        else {
+                            $('.total').append(totalContainers + ' ' + container);
+                        }
 
                         if (containersPerDay > 1){
                             $('.containers').append('Your herd needs '+containersPerDay+' '+container);
                         }
-                        else{ // If less than one container, give amount in smaller units
+                        else if (containerUnit == 'Gallons'){ // If less than a gallon, give the amount in ounces
+                            amountPerDay = Math.round(amountPerDay * 128);
+                            $('.containers').append('Your herd needs '+amountPerDay+' oz');
+                        }
+                        else { // If less than one container, give amount in smaller units
                             $('.containers').append('Your herd needs '+amountPerDay+' '+containerUnit);
                         }
                         if (days > 1){
@@ -317,19 +352,20 @@ $(document).ready(function() {
                         }
                         // Injection
                         if (application == 'Injection'){
-                            $('.stock').append('Inject '+amountPerAnimal+' '+containerUnit+' per animal.');
+                            $('.stock').append('Inject '+amountPerAnimal+' '+containerUnit+' per animal per day.');
                         }
                         if (application == 'Oral On Feed'){
                             $('.stock').append('Add '+amountPerAnimal+' '+containerUnit+' into the feed of each animal.');
                         }
                         // Special Case
                         if (specialCase == 1){
+                            if (medicine == 'Baytril')
                             if (medicine == 'Sulfadimethoxine 12.5'){
                                 // Day One
-                                containersPerGallonOfStock = medicines[i].AmountUse;
+                                containersPerGallonOfStock = selectedMedicines[i].AmountUse;
                                 containersDayOne = stock / containersPerGallonOfStock;
                                 // Day two
-                                containersPerGallonOfStock = medicines[i].AmountUse2;
+                                containersPerGallonOfStock = selectedMedicines[i].AmountUse2;
                                 containersDayTwo = stock / containersPerGallonOfStock;
                                 // Round display amounts
                                 containersDayOne = Math.round(containersDayOne * 100) / 100;
@@ -343,18 +379,68 @@ $(document).ready(function() {
                             if (medicine == 'Ibuprofen 15.80%'){
                                 $('.total').empty();
                                 totalContainers = Math.ceil((containersPerDay * days) / 8); // Give total in gallons
-                                $('.total').append('Total Needed: '+totalContainers+ ' gallon containers'); 
+                                if (totalContainers == 1){
+                                    $('.total').append('Total Needed: '+totalContainers+ ' Gallon');
+                                }
+                                else {
+                                    $('.total').append('Total Needed: '+totalContainers+ ' Gallons');
+                                }
+                                $('.containers').empty();
+                                $('.containers').append('Your herd needs '+containersPerDay+' '+container);
+                                if (days > 1){
+                                    $('.containers').append(' of '+medicine+' per day for '+days+' days.');
+                                }
+                                else{
+                                    $('.containers').append(' of '+medicine+' for '+days+' day.');
+                                }
                             }
                             if (medicine == 'Gen-Guard Bucket'){
                                 $('.total').empty();
                                 totalContainers = Math.ceil((containersPerDay * days) / 19); // Give total in gallons
                                 $('.total').append('Total Needed: '+totalContainers+ ' buckets'); 
                             }
+                            if (medicine == 'Ivermectin Pour On' || medicine == 'Cydectin'){
+                                if (totalContainers == 1){
+                                    $('.total').append(totalContainers + ' 5 Liter bottle');
+                                }
+                                else{
+                                    $('.total').append(totalContainers + ' 5 Liter bottles');
+                                }
+                            }
                         }
                     }
                 }
             }
 
+            //DEBUG
+            // console.log('Form Choices');
+            // console.log('Medicine: ' + medicine);
+            // console.log('Container Size: ' + containerSize);
+            // console.log('Selected option: ' + selectedOption);
+            // console.log('Species: ' + species);
+            // console.log('Days: ' + days);
+            // console.log('Number of animals: ' + numberOfAnimals);
+            // console.log('Average weight: ' + avgWeight);
+            // console.log('');
+            // console.log('Medicine Info')
+            // console.log('Selected Medicine Name: ' + selectedMedicineName);
+            // if (medicine != selectedMedicineName){
+            //     alert('Medicine names don\'t match!');
+            // }
+            // console.log('Container size: ' + selectedContainerSize);
+            // console.log('Application: ' + application);
+            // console.log('Pounds treated per container: ' + poundsTreatedPerContainer);
+            // console.log('Container amount: ' + containerAmount);
+            // console.log('Containers per day: ' + containersPerDay);
+
+            // console.log('ORAL WATER');
+            // console.log('Total Water Needed: ' + totalWaterNeeded);
+            // console.log('Total Stock Needed: ' + stock);
+            // console.log('Containers per animal: ' + amountPerAnimal);
+            // console.log('Containers per gal of stock: ' + containersPerGallonOfStock);
+            //  .log('Containers per day: ' + containersPerDay);
+            // console.log('Total containers: ' + totalContainers);
+            
             // Did they fill out the form right?
             if (medicine == 'nope'){
                 $(".instructions").empty();
