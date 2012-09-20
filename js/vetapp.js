@@ -141,10 +141,23 @@ $(document).ready(function() {
                 }
             });
 
-            // Special case for Baytril
+            
             $('#options').change(function(){
                 var medicine = $("#medicine").val();
                 var option = $("#options").val();
+                // Special case for Oxytetracycline
+                if (medicine == 'Oxytetracycline'){
+                    if (option == '3 Day Therapy'){
+                        $('#containerSize').val('100 ml');
+                        $('#containerSize').selectmenu('refresh');
+                        $('#containerSize').selectmenu('disable');
+                    }
+                    else{
+                        $('#containerSize').selectmenu('enable');
+                    }
+
+                }
+                // Special case for Baytril
                 if (medicine == 'Baytril'){
                     if (option == 'Single Injection'){
                         $('#days').val(1);
@@ -177,14 +190,26 @@ $(document).ready(function() {
                         $('#daysWrapper').slideDown();
                     }
                 }
+                else if (medicine == 'Ivermectin Injection'){
+                    if (species == 'Swine'){
+                        $('#days').val(1);
+                        $('#days').slider('disable');
+                        $('#daysWrapper').slideUp();
+                    }
+                    else{
+                        $('#days').slider('enable');
+                        $('#daysWrapper').slideDown();
+                    }
+                }
                 else{
                     $('#days').slider('enable');
                     $('#daysWrapper').slideDown();
                 }
             });
+
             
 
-        } // /.getJSON
+        } // menuspecialcases
 
         // MENU FUNCTION CALLS
         hideInitMenu();
@@ -314,6 +339,15 @@ $(document).ready(function() {
                                     amountPerAnimal = containersPerAnimal * containerAmount; // In ml
                                 }
                             }
+                            if (medicine == 'Baytril'){
+                                if (species == 'Swine'){
+                                    poundsTreatedPerContainer = selectedMedicines[i].AmountUse2;
+                                    containersPerDay = totalWeight / poundsTreatedPerContainer;
+                                    totalContainers = days * containersPerDay;
+                                    containersPerAnimal = containersPerDay / numberOfAnimals;
+                                    amountPerAnimal = containersPerAnimal * containerAmount; // In ml
+                                }
+                            }
                         }
                         // Display amounts
                         // Round display amounts
@@ -359,7 +393,6 @@ $(document).ready(function() {
                         }
                         // Special Case
                         if (specialCase == 1){
-                            if (medicine == 'Baytril')
                             if (medicine == 'Sulfadimethoxine 12.5'){
                                 // Day One
                                 containersPerGallonOfStock = selectedMedicines[i].AmountUse;
@@ -400,11 +433,12 @@ $(document).ready(function() {
                                 $('.total').append('Total Needed: '+totalContainers+ ' buckets'); 
                             }
                             if (medicine == 'Ivermectin Pour On' || medicine == 'Cydectin'){
+                                $('.total').empty();
                                 if (totalContainers == 1){
-                                    $('.total').append(totalContainers + ' 5 Liter bottle');
+                                    $('.total').append('Total Needed: ' + totalContainers + ' 5 Liter bottle');
                                 }
                                 else{
-                                    $('.total').append(totalContainers + ' 5 Liter bottles');
+                                    $('.total').append('Total Needed: ' + totalContainers + ' 5 Liter bottles');
                                 }
                             }
                         }

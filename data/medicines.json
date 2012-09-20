@@ -346,7 +346,7 @@
         "Container": "gallons",
         "SpecialCase": "",
         "Script": "",
-        "ProductSize": "gallons",
+        "ProductSize": "Gallons",
         "ActiveDrug": "Piperazine 17%",
         "DoseageDescription": "5.1mg/lb",
         "ContainerAmount": "1",
