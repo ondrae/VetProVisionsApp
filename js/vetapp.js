@@ -268,7 +268,7 @@ $(document).ready(function() {
                             var totalContainers = Math.ceil(containersPerDay * days);
                             
                             // Round reported numbers
-                            if (stock > 1){
+                            if (stock > 0.1){
                                 stock = Math.round(stock * 100) / 100;
                                 $('.stock').append('Mix into '+stock+' gallons of stock solution each day.');
                             }
