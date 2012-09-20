@@ -127,10 +127,17 @@ $(document).ready(function() {
 
         // Special Cases for the Menu
         function menuSpecialCases(){
-            // Special Case for Sulfadimethoxine 12.5
+            
             $("#medicine").change(function(){
                 var medicine = $("#medicine").val();
-                if (medicine == 'Sulfadimethoxine 12.5'){
+                // Special case for Draxxin
+                if (medicine == 'Draxxin'){
+                    $('#days').val(1);
+                    $('#days').slider('disable');
+                    $('#daysWrapper').slideUp();
+                }
+                // Special Case for Sulfadimethoxine 12.5
+                else if (medicine == 'Sulfadimethoxine 12.5'){
                     $('#days').val(2);
                     $('#days').slider('disable');
                     $('#daysWrapper').slideUp();
@@ -181,17 +188,6 @@ $(document).ready(function() {
                     if (species == 'Swine'){
                         $('#options').val('Single Injection');
                         $('#options').selectmenu('refresh');
-                        $('#days').val(1);
-                        $('#days').slider('disable');
-                        $('#daysWrapper').slideUp();
-                    }
-                    else{
-                        $('#days').slider('enable');
-                        $('#daysWrapper').slideDown();
-                    }
-                }
-                else if (medicine == 'Ivermectin Injection'){
-                    if (species == 'Swine'){
                         $('#days').val(1);
                         $('#days').slider('disable');
                         $('#daysWrapper').slideUp();
