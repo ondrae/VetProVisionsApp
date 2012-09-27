@@ -17,7 +17,7 @@ $(document).ready(function() {
         function fillMedicineMenu(medicines){
             var medicineNames = [];
             for(i in medicines){
-                if(medicineNames.indexOf(medicines[i].ProductName) == -1){
+                if($.inArray(medicines[i].ProductName, medicineNames) == -1){
                     medicineNames.push(medicines[i].ProductName);
                 }
             }
@@ -45,7 +45,7 @@ $(document).ready(function() {
         function fillSizeMenu(selectedMedicines){
             var sizes =[];
             for(i in selectedMedicines){
-                if (sizes.indexOf(selectedMedicines[i].ProductSize) == -1){
+                if ($.inArray(selectedMedicines[i].ProductSize, sizes) == -1){
                     sizes.push(selectedMedicines[i].ProductSize);
                 }
             }
@@ -71,7 +71,7 @@ $(document).ready(function() {
             var options =[];
             for(i in selectedMedicines){
                 if (selectedMedicines[i].Options.length > 0){
-                    if (options.indexOf(selectedMedicines[i].Options) == -1){
+                    if ($.inArray(selectedMedicines[i].Options, options) == -1){
                         options.push(selectedMedicines[i].Options);
                     }
                 }
@@ -99,7 +99,7 @@ $(document).ready(function() {
                 if (selectedMedicines[i].Species.length > 0) {
                     species_split = selectedMedicines[i].Species.split(',');
                     for (x in species_split){
-                        if (species_list.indexOf(species_split[x]) == -1){
+                        if ($.inArray(species_split[x], species_list) == -1){
                             species_list.push(species_split[x]);
                         }
                     }
