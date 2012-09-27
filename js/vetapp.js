@@ -1,5 +1,29 @@
+// Returns the version of Windows Internet Explorer or a -1
+function getInternetExplorerVersion()
+{
+    var rv = -1; // Return value assumes failure.
+    if (navigator.appName == 'Microsoft Internet Explorer') {
+        var ua = navigator.userAgent;
+        var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+        if (re.exec(ua) != null)
+            rv = parseFloat(RegExp.$1);
+    }
+    return rv;
+}
+
 // Wait for page and JS libraries to load.
 $(document).ready(function() {
+
+    // Test for IE 6 or 7
+    var browserName = navigator.appName;
+    var browserVer = getInternetExplorerVersion();
+    var oldIE = false;
+
+    if (browserName == 'Microsoft Internet Explorer' &&
+        (browserVer == '6' || browserVer == '7')
+        ) {
+            oldIE = true;
+    }
 
     // Load the Medicine data into a list of json objects.
     $.getJSON('data/medicines.json', function(medicines) {
@@ -55,7 +79,10 @@ $(document).ready(function() {
                 for (i in sizes){
                     $('#containerSize').append('<option value="'+sizes[i]+'">'+sizes[i]+'</option>');
                 }
-                $('#containerSize').val(sizes[0]);
+                try{
+                    $('#containerSize').val(sizes[0]);
+                }
+                catch(err){var ieDebug = 0;}
                 $('#containerSize').selectmenu('refresh');
                 $('#containerSize').selectmenu('enable');
             }
@@ -81,7 +108,10 @@ $(document).ready(function() {
                 for (i in options){
                     $('#options').append('<option value="'+options[i]+'">'+options[i]+'</option>');
                 }
-                $('#options').val(options[0]);
+                try{
+                    $('#options').val(options[0]);
+                }
+                catch(err){ var ieDebug = 0;}
                 $('#options').selectmenu('refresh');
                 $('#options').selectmenu('enable');  
             }
@@ -110,9 +140,12 @@ $(document).ready(function() {
                 for (i in species_list){
                     $('#species').append('<option value="'+species_list[i]+'">'+species_list[i]+'</option>');
                 }
-                $('#species').val(species_list[0]);
-                    $('#species').selectmenu('refresh');
-                    $('#species').selectmenu('enable');
+                try{
+                    $('#species').val(species_list[0]);
+                }
+                catch(err){ var ieDebug = 0;}
+                $('#species').selectmenu('refresh');
+                $('#species').selectmenu('enable');
             }else{
                 $('#speciesWrapper').slideUp();
             }
@@ -132,13 +165,19 @@ $(document).ready(function() {
                 var medicine = $("#medicine").val();
                 // Special case for Draxxin
                 if (medicine == 'Draxxin'){
-                    $('#days').val(1);
+                    try{
+                        $('#days').val(1);
+                    }
+                    catch(err){ var ieDebug = 0;}
                     $('#days').slider('disable');
                     $('#daysWrapper').slideUp();
                 }
                 // Special Case for Sulfadimethoxine 12.5
                 else if (medicine == 'Sulfadimethoxine 12.5'){
-                    $('#days').val(2);
+                    try{
+                        $('#days').val(2);
+                    }
+                    catch(err){ var ieDebug = 0;}
                     $('#days').slider('disable');
                     $('#daysWrapper').slideUp();
                 }
@@ -155,7 +194,10 @@ $(document).ready(function() {
                 // Special case for Oxytetracycline
                 if (medicine == 'Oxytetracycline'){
                     if (option == '3 Day Therapy'){
-                        $('#containerSize').val('100 ml');
+                        try{
+                            $('#containerSize').val('100 ml');
+                        }
+                        catch(err){ var ieDebug = 0;}
                         $('#containerSize').selectmenu('refresh');
                         $('#containerSize').selectmenu('disable');
                     }
@@ -167,7 +209,10 @@ $(document).ready(function() {
                 // Special case for Baytril
                 if (medicine == 'Baytril'){
                     if (option == 'Single Injection'){
-                        $('#days').val(1);
+                        try{
+                            $('#days').val(1);
+                        }
+                        catch(err){ var ieDebug = 0;}
                         $('#days').slider('disable');
                         $('#daysWrapper').slideUp();
                     }
@@ -188,7 +233,10 @@ $(document).ready(function() {
                     if (species == 'Swine'){
                         $('#options').val('Single Injection');
                         $('#options').selectmenu('refresh');
-                        $('#days').val(1);
+                        try{
+                            $('#days').val(1);
+                        }
+                        catch(err){ var ieDebug = 0;}
                         $('#days').slider('disable');
                         $('#daysWrapper').slideUp();
                     }
@@ -217,7 +265,9 @@ $(document).ready(function() {
             fillOptionsMenu(selectedMedicines);
             fillSpeciesMenu(selectedMedicines);
         });
-        showEmailField();
+        if (oldIE != true){
+            showEmailField();
+        }
         menuSpecialCases();
 
         // INSTRUCTIONS -----------------------------------------------
@@ -234,11 +284,13 @@ $(document).ready(function() {
             var avgWeight = $("#avgWeight").val();
             var selectedOption = $("#options").val();
             var email = $('#email').val();
-            if (email == ''){
+            if (oldIE != true){
+                if (email == ''){
                 email = window.localStorage.getItem("email");
-            }
-            else{
-                window.localStorage.setItem("email", email);
+                }
+                else{
+                    window.localStorage.setItem("email", email);
+                }
             }
             var totalWeight = numberOfAnimals * avgWeight;
             
@@ -502,13 +554,16 @@ $(document).ready(function() {
                 , "password": 'genericPassword'
             });
             
-            user.signUp(null, {
-                success: function(user) {
-                },
-                error: function(user, error) {
-                }
-            });
-
+            try{
+                user.signUp(null, {
+                    success: function(user) {
+                    },
+                    error: function(user, error) {
+                    }
+                });
+            }
+            catch(err){var ieDebug = 0;}
+            
             var UsageObject = Parse.Object.extend("UsageObject");
             var usageObject = new UsageObject();
             
@@ -539,15 +594,18 @@ $(document).ready(function() {
             //     usageObject.set({"amountPerAnimal":amountPerAnimal});
             // }
 
-            usageObject.save(null, {
-              success: function(usageObject) {
-                // The object was saved successfully.
-              },
-              error: function(usageObject, error) {
-                // The save failed.
-                // error is a Parse.Error with an error code and description.
-              }
-            });
+            try{
+                usageObject.save(null, {
+                  success: function(usageObject) {
+                    // The object was saved successfully.
+                  },
+                  error: function(usageObject, error) {
+                    // The save failed.
+                    // error is a Parse.Error with an error code and description.
+                  }
+                });
+            }
+            catch(err){var ieDebug = 0;}            
             
             $("#clear").click(function() {
                 location.reload();
