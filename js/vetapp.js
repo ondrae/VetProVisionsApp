@@ -14,26 +14,18 @@ function getInternetExplorerVersion()
 // Wait for page and JS libraries to load.
 $(document).ready(function() {
 
-
-
     // Test for IE 6 or 7
     var browserName = navigator.appName;
     var browserVer = getInternetExplorerVersion();
-    var oldIE = false;
 
     if (browserName == 'Microsoft Internet Explorer' &&
         (browserVer == '6' || browserVer == '7')
         ) {
-            oldIE = true;
-    }
-
-    if (oldIE == true){
-        alert('Please upgrade your browser to use the Vet Provisions Dosage Calculator.');
+            alert('Please upgrade your browser to use the Vet Provisions Dosage Calculator.');
     }
 
     // Load the Medicine data into a list of json objects.
     $.getJSON('data/medicines.json', function(medicines) {
-
 
         // MENU ----------------------------------------------
 
