@@ -14,6 +14,8 @@ function getInternetExplorerVersion()
 // Wait for page and JS libraries to load.
 $(document).ready(function() {
 
+
+
     // Test for IE 6 or 7
     var browserName = navigator.appName;
     var browserVer = getInternetExplorerVersion();
@@ -23,6 +25,10 @@ $(document).ready(function() {
         (browserVer == '6' || browserVer == '7')
         ) {
             oldIE = true;
+    }
+
+    if (oldIE == true){
+        alert('Please upgrade your browser to use the Vet Provisions Dosage Calculator.');
     }
 
     // Load the Medicine data into a list of json objects.
@@ -483,10 +489,10 @@ $(document).ready(function() {
                             if (medicine == 'Ivermectin Pour On' || medicine == 'Cydectin'){
                                 $('.total').empty();
                                 if (totalContainers == 1){
-                                    $('.total').append('Total Needed: ' + totalContainers + ' 5 Liter bottle');
+                                    $('.total').append('Total Needed: ' + totalContainers + ' Five Liter bottle');
                                 }
                                 else{
-                                    $('.total').append('Total Needed: ' + totalContainers + ' 5 Liter bottles');
+                                    $('.total').append('Total Needed: ' + totalContainers + ' Five Liter bottles');
                                 }
                             }
                         }
