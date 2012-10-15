@@ -18,6 +18,8 @@ $(document).ready(function() {
     var browserName = navigator.appName;
     var browserVer = getInternetExplorerVersion();
 
+    //console.log(browserVer);
+
     if (browserName == 'Microsoft Internet Explorer' &&
         (browserVer == '6' || browserVer == '7')
         ) {
