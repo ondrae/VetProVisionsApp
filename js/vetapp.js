@@ -263,9 +263,6 @@ $(document).ready(function() {
             fillOptionsMenu(selectedMedicines);
             fillSpeciesMenu(selectedMedicines);
         });
-        if (oldIE != true){
-            showEmailField();
-        }
         menuSpecialCases();
 
         // INSTRUCTIONS -----------------------------------------------
@@ -282,13 +279,11 @@ $(document).ready(function() {
             var avgWeight = $("#avgWeight").val();
             var selectedOption = $("#options").val();
             var email = $('#email').val();
-            if (oldIE != true){
-                if (email == ''){
-                email = window.localStorage.getItem("email");
-                }
-                else{
-                    window.localStorage.setItem("email", email);
-                }
+            if (email == ''){
+            email = window.localStorage.getItem("email");
+            }
+            else{
+                window.localStorage.setItem("email", email);
             }
             var totalWeight = numberOfAnimals * avgWeight;
             
