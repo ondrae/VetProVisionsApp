@@ -181,6 +181,14 @@ $(document).ready(function() {
                     $('#days').slider('disable');
                     $('#daysWrapper').slideUp();
                 }
+                else if (medicine == 'Ivermectin Pour On'){
+                    try{
+                        $('#days').val(1);
+                    }
+                    catch(err){ var ieDebug = 0;}
+                    $('#days').slider('disable');
+                    $('#daysWrapper').slideUp();
+                }
                 else{
                     $('#days').slider('enable');
                     $('#daysWrapper').slideDown();
@@ -374,7 +382,7 @@ $(document).ready(function() {
                                     }
                                 }
                             }
-                            if (medicine == 'Ivermectin'){
+                            if (medicine == 'Ivermectin Injection'){
                                 if (species == 'Swine'){
                                     poundsTreatedPerContainer = selectedMedicines[i].AmountUse2;
                                     containersPerDay = totalWeight / poundsTreatedPerContainer;
@@ -396,7 +404,7 @@ $(document).ready(function() {
                         // Round display amounts
                         var amountPerDay = containersPerDay * containerAmount;
                         containersPerDay = Math.round(containersPerDay * 100) / 100;
-                        amountPerDay = Math.round(amountPerDay * 100) / 100;
+                        // amountPerDay = Math.round(amountPerDay * 100) / 100;
                         amountPerAnimal = Math.round(amountPerAnimal * 100) / 100;
 
                         if (totalContainers == 1){
@@ -407,11 +415,15 @@ $(document).ready(function() {
                             $('.total').append(totalContainers + ' ' + container);
                         }
 
-                        if (containersPerDay > 1){
+                        if (containersPerDay >= 1){
                             $('.containers').append('Your herd needs '+containersPerDay+' '+container);
                         }
                         else if (containerUnit == 'Gallons'){ // If less than a gallon, give the amount in ounces
                             amountPerDay = Math.round(amountPerDay * 128);
+                            $('.containers').append('Your herd needs '+amountPerDay+' oz');
+                        }
+                        else if (containerUnit == 'Pints'){ // If less than a gallon, give the amount in ounces
+                            amountPerDay = Math.round(amountPerDay * 16);
                             $('.containers').append('Your herd needs '+amountPerDay+' oz');
                         }
                         else { // If less than one container, give amount in smaller units
