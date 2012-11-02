@@ -189,6 +189,22 @@ $(document).ready(function() {
                     $('#days').slider('disable');
                     $('#daysWrapper').slideUp();
                 }
+                else if (medicine == 'Oxytet Inj 200'){
+                    try{
+                        $('#days').val(2);
+                    }
+                    catch(err){ var ieDebug = 0;}
+                    $('#days').slider('disable');
+                    $('#daysWrapper').slideUp();
+                }
+                else if (medicine == 'Oxytet Inj 300'){
+                    try{
+                        $('#days').val(3);
+                    }
+                    catch(err){ var ieDebug = 0;}
+                    $('#days').slider('disable');
+                    $('#daysWrapper').slideUp();
+                }
                 else{
                     $('#days').slider('enable');
                     $('#daysWrapper').slideDown();
@@ -199,21 +215,6 @@ $(document).ready(function() {
             $('#options').change(function(){
                 var medicine = $("#medicine").val();
                 var option = $("#options").val();
-                // Special case for Oxytetracycline
-                if (medicine == 'Oxytetracycline'){
-                    if (option == '3 Day Therapy'){
-                        try{
-                            $('#containerSize').val('100 ml');
-                        }
-                        catch(err){ var ieDebug = 0;}
-                        $('#containerSize').selectmenu('refresh');
-                        $('#containerSize').selectmenu('disable');
-                    }
-                    else{
-                        $('#containerSize').selectmenu('enable');
-                    }
-
-                }
                 // Special case for Baytril
                 if (medicine == 'Baytril'){
                     if (option == 'Single Injection'){
@@ -234,6 +235,7 @@ $(document).ready(function() {
                     $('#daysWrapper').slideDown();
                 }
             });
+
             $('#species').change(function(){
                 var medicine = $("#medicine").val();
                 var species = $("#species").val();
@@ -582,7 +584,7 @@ $(document).ready(function() {
                 // , "days":days
                 , "species":species
                 , "numberOfAnimals":numberOfAnimals
-                // , "avgWeight":avgWeight
+                , "avgWeight":avgWeight
                 // , "container":container
                 // , "dose":dose
                 // , "doseUnit":doseUnit
