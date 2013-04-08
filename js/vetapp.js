@@ -559,22 +559,6 @@ $(document).ready(function() {
 
             Parse.initialize("EdGILd3A1o6QtEWVOGsVkGdCZ30mGyu0fAdLpJgD", "YFQnZQtz54YTDtau556EetWhVINaN6IdWPIfVYAx"); 
             //Report usage back to Parse.
-            var user = new Parse.User();
-            user.set({
-                "username": email
-                , "password": 'genericPassword'
-            });
-            
-            // try{
-            //     user.signUp(null, {
-            //         success: function(user) {
-            //         },
-            //         error: function(user, error) {
-            //         }
-            //     });
-            // }
-            // catch(err){var ieDebug = 0;}
-            
             var UsageObject = Parse.Object.extend("UsageObject");
             var usageObject = new UsageObject();
             
