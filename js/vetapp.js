@@ -405,6 +405,7 @@ $(document).ready(function() {
                         // Display amounts
                         // Round display amounts
                         var amountPerDay = containersPerDay * containerAmount;
+
                         containersPerDay = Math.round(containersPerDay * 100) / 100;
                         // amountPerDay = Math.round(amountPerDay * 100) / 100;
                         amountPerAnimal = Math.round(amountPerAnimal * 100) / 100;
@@ -429,6 +430,7 @@ $(document).ready(function() {
                             $('.containers').append('Your herd needs '+amountPerDay+' oz');
                         }
                         else { // If less than one container, give amount in smaller units
+                            amountPerDay = Math.round(amountPerDay * 100) / 100;
                             $('.containers').append('Your herd needs '+amountPerDay+' '+containerUnit);
                         }
                         if (days > 1){
