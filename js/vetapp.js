@@ -396,7 +396,7 @@ $(document).ready(function() {
                                 if (species == 'Swine'){
                                     poundsTreatedPerContainer = selectedMedicines[i].AmountUse2;
                                     containersPerDay = totalWeight / poundsTreatedPerContainer;
-                                    totalContainers = days * containersPerDay;
+                                    totalContainers = Math.ceil(containersPerDay * days);
                                     containersPerAnimal = containersPerDay / numberOfAnimals;
                                     amountPerAnimal = containersPerAnimal * containerAmount; // In ml
                                 }
