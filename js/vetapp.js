@@ -565,15 +565,15 @@ $(document).ready(function() {
                 , "password": 'genericPassword'
             });
             
-            try{
-                user.signUp(null, {
-                    success: function(user) {
-                    },
-                    error: function(user, error) {
-                    }
-                });
-            }
-            catch(err){var ieDebug = 0;}
+            // try{
+            //     user.signUp(null, {
+            //         success: function(user) {
+            //         },
+            //         error: function(user, error) {
+            //         }
+            //     });
+            // }
+            // catch(err){var ieDebug = 0;}
             
             var UsageObject = Parse.Object.extend("UsageObject");
             var usageObject = new UsageObject();
